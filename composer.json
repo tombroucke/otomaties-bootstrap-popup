@@ -1,0 +1,16 @@
+{
+  "name": "tombroucke/otomaties-bootstrap-popup",
+  "description": "",
+  "keywords": ["wordpress", "plugin", "bootstrap", "popup"],
+  "homepage": "https://github.com/tombroucke/otomaties-bootstrap-popup",
+  "authors": [
+    {
+      "name": "Tom Broucke",
+      "homepage": "https://tombroucke.be"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "^1.0"
+  }
+}

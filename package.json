@@ -1,0 +1,21 @@
+{
+  "name": "otomaties-bootstrap-popup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "rm -rf dist/* && webpack --mode development --watch",
+    "build": "rm -rf dist/* && webpack --mode production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "stylelint": "^13.3.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.43.0",
+    "webpack-assets-manifest": "^3.1.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {}
+}
