@@ -48,7 +48,7 @@ class Bootstrap_Plugin {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'otomaties-popup', asset_path('main.js'), array('jquery'), false, true );
+		wp_enqueue_script( 'otomaties-popup', asset_path('main.js'), array('jquery'), '1.0.0', true );
 	}
 
 	public function include_popup() {

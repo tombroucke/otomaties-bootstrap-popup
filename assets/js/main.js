@@ -3,7 +3,8 @@ import Cookie from './cookie';
 jQuery(document).ready(function($){
 	let cookie;
 	if( $('#otomatiesModal').length ) {
-		const show_once = $('#otomatiesModal').attr('data-showonce');
+		const show_once = $('#otomatiesModal').data('showonce');
+		const delay = $('#otomatiesModal').data('delay');
 		if( show_once ) {
 			cookie = new Cookie("saw_" + show_once)
 
@@ -13,6 +14,8 @@ jQuery(document).ready(function($){
 
 			cookie.set(this.show_once)
 		}
-		$('#otomatiesModal').modal('show')
+		window.setTimeout(function(){
+			$('#otomatiesModal').modal('show')
+		}, delay);
 	}
 });

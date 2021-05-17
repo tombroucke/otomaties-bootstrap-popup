@@ -4,11 +4,12 @@ $front_page_only 	= get_field('popup_front_page_only', 'option');
 $title 				= get_field('popup_title', 'option');
 $content 			= get_field('popup_content', 'option');
 $show_once 			= get_field('popup_show_once', 'option');
+$delay 				= get_field('popup_delay', 'option') ?: 0;
 $hash				= substr(md5($title . $content), 0, 6);
 ?>
 <?php if( $enabled && ( !$front_page_only || is_front_page() ) ): ?>
 	<!-- Modal -->
-	<div class="modal fade" id="otomatiesModal" tabindex="-1" role="dialog" aria-labelledby="otomatiesModalTitle" aria-hidden="true" data-showonce="<?php echo ( $show_once ? $hash : ''); ?>">
+	<div class="modal fade" id="otomatiesModal" tabindex="-1" role="dialog" aria-labelledby="otomatiesModalTitle" aria-hidden="true" data-delay="<?php echo $delay; ?>" data-showonce="<?php echo ( $show_once ? $hash : ''); ?>">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">

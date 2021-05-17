@@ -61,6 +61,14 @@ acf_add_local_field_group(array(
 			'ui_off_text' => '',
 		),
 		array(
+			'key' => 'field_a5a16bebb17a2',
+			'label' => __( 'Delay', 'otomaties-popup' ),
+			'name' => 'popup_delay',
+			'type' => 'number',
+			'instructions' => __( 'In milliseconds', 'otomaties-popup' ),
+			'default_value' => 0,
+		),
+		array(
 			'key' => 'field_5ea95cc9e88ba',
 			'label' => __( 'Title', 'otomaties-popup' ),
 			'name' => 'popup_title',
