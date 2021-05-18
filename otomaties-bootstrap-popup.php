@@ -62,7 +62,7 @@ class Bootstrap_Plugin {
 				'page_title' 	=> __('Popup', 'sage'),
 				'menu_title'	=> __('Popup settings', 'sage'),
 				'menu_slug' 	=> 'otomaties-popup-settings',
-				'capability'	=> 'edit_posts',
+				'capability'	=> apply_filters( 'otomaties_popup_edit_cap' ,'edit_posts'),
 				'icon_url' 		=> 'dashicons-megaphone',
 				'redirect'		=> false
 			) );
