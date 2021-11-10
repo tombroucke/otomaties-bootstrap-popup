@@ -63,16 +63,28 @@ class Plugin
 
     public function enabled()
     {
-        $enabledPages = [];
-        if (function_exists('get_field')) {
-            $enabledPages = array_map(function ($page) {
-                return $page->ID;
-            }, get_field('popup_show_on_pages', 'option'));
+        if (!function_exists('get_field')) {
+            return false;
+        };
+
+        $enabledPages = array_map(function ($page) {
+            return $page->ID;
+        }, (array)get_field('popup_show_on_pages', 'option'));
+
+        
+        if (!get_field('popup_enabled', 'option')) {
+            return false;
         }
-        if (!$enabledPages || empty($enabledPages) || in_array(get_the_ID(), $enabledPages)) {
-            return true;
+
+        if (empty($enabledPages)) {
+            return false;
         }
-        return false;
+
+        if (!in_array(get_the_ID(), $enabledPages)) {
+            return false;
+        }
+        
+        return true;
     }
 
     public function popupTemplate()
