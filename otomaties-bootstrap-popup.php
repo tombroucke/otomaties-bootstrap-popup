@@ -12,70 +12,97 @@
 
 namespace Otomaties\Popup;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-class Bootstrap_Plugin {
-
-	private static $instance = null;
-
-	/**
-	 * Creates or returns an instance of this class.
-	 * @since  1.0.0
-	 * @return Bootstrap_Plugin A single instance of this class.
-	 */
-	public static function get_instance() {
-		if ( null === self::$instance ) {
-			self::$instance = new self;
-		}
-
-		return self::$instance;
-	}
-
-	private function __construct() {
-		$this->includes();
-		$this->init();
-	}
-
-	private function includes() {
-		include 'includes/class-assets.php';
-	}
-
-	private function init() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 90 );
-		add_action( 'wp_footer', array( $this, 'include_popup' ) );
-		add_action( 'acf/init', array( $this, 'add_options_page' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
-	}
-
-	public function enqueue_scripts() {
-		wp_enqueue_script( 'otomaties-popup', asset_path('main.js'), array('jquery'), '1.0.0', true );
-	}
-
-	public function include_popup() {
-		include 'templates/popup.php';
-	}
-
-	public function add_options_page() {
-		if( function_exists('acf_add_options_page') ) {
-
-			acf_add_options_page( array(
-				'page_title' 	=> __('Popup', 'sage'),
-				'menu_title'	=> __('Popup settings', 'sage'),
-				'menu_slug' 	=> 'otomaties-popup-settings',
-				'capability'	=> apply_filters( 'otomaties_popup_edit_cap' ,'edit_posts'),
-				'icon_url' 		=> 'dashicons-megaphone',
-				'redirect'		=> false
-			) );
-
-		}
-
-		if( function_exists('acf_add_local_field_group') ) {
-			include 'acf/acf-popup.php';
-		}
-	}
-
-	public function load_textdomain() {
-		load_plugin_textdomain( 'otomaties-popup', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
-	}
+if (! defined('ABSPATH')) {
+    exit;
 }
-Bootstrap_Plugin::get_instance();
+
+class Plugin
+{
+
+    private static $instance = null;
+
+    /**
+     * Creates or returns an instance of this class.
+     * @since  1.0.0
+     * @return Plugin A single instance of this class.
+     */
+    public static function get_instance()
+    {
+        if (null === self::$instance) {
+            self::$instance = new self;
+        }
+
+        return self::$instance;
+    }
+
+    private function __construct()
+    {
+        $this->includes();
+        $this->init();
+    }
+
+    private function includes()
+    {
+        include 'includes/class-assets.php';
+    }
+
+    private function init()
+    {
+        add_action('wp_enqueue_scripts', array( $this, 'enqueueScripts' ), 90);
+        add_action('wp_footer', array( $this, 'popupTemplate' ));
+        add_action('acf/init', array( $this, 'addOptionsPage' ));
+        add_action('plugins_loaded', array( $this, 'loadTextdomain' ));
+    }
+
+    public function enqueueScripts()
+    {
+        if ($this->enabled()) {
+            wp_enqueue_script('otomaties-popup', asset_path('main.js'), array('jquery'), '1.0.0', true);
+        }
+    }
+
+    public function enabled()
+    {
+        $enabledPages = [];
+        if (function_exists('get_field')) {
+            $enabledPages = array_map(function ($page) {
+                return $page->ID;
+            }, get_field('popup_show_on_pages', 'option'));
+        }
+        if (!$enabledPages || empty($enabledPages) || in_array(get_the_ID(), $enabledPages)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function popupTemplate()
+    {
+        if ($this->enabled()) {
+            include 'templates/popup.php';
+        }
+    }
+
+    public function addOptionsPage()
+    {
+        if (function_exists('acf_add_options_page')) {
+            acf_add_options_page(array(
+            'page_title'    => __('Popup', 'sage'),
+            'menu_title'    => __('Popup settings', 'sage'),
+            'menu_slug'     => 'otomaties-popup-settings',
+            'capability'    => apply_filters('otomaties_popup_edit_cap', 'edit_posts'),
+            'icon_url'      => 'dashicons-megaphone',
+            'redirect'      => false
+            ));
+        }
+
+        if (function_exists('acf_add_local_field_group')) {
+            include 'acf/acf-popup.php';
+        }
+    }
+
+    public function loadTextdomain()
+    {
+        load_plugin_textdomain('otomaties-popup', false, plugin_basename(dirname(__FILE__)) . '/languages');
+    }
+}
+Plugin::get_instance();
