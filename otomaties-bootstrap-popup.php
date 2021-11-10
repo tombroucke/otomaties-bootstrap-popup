@@ -76,11 +76,7 @@ class Plugin
             return false;
         }
 
-        if (empty($enabledPages)) {
-            return false;
-        }
-
-        if (!in_array(get_the_ID(), $enabledPages)) {
+        if (!empty($enabledPages) && !in_array(get_the_ID(), $enabledPages)) {
             return false;
         }
         
