@@ -1,16 +1,16 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Otomaties Bootstrap Popup\n"
-"POT-Creation-Date: 2020-04-29 15:42+0200\n"
-"PO-Revision-Date: 2020-04-29 15:42+0200\n"
-"Last-Translator: Tom Broucke <tom@tombrouckeBe>\n"
-"Language-Team: Tom Broucke <tom@tombrouckeBe>\n"
+"POT-Creation-Date: 2022-02-23 14:54+0100\n"
+"PO-Revision-Date: 2022-02-23 14:54+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: otomaties-bootstrap-popup.php\n"
@@ -19,49 +19,310 @@ msgstr ""
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
 
-#: acf/acf-popup.php:8
-msgid "Enabled"
-msgstr ""
-
-#: acf/acf-popup.php:19
-msgid "Show popup"
-msgstr ""
-
-#: acf/acf-popup.php:27
-msgid "Only on front page"
-msgstr ""
-
-#: acf/acf-popup.php:38
-msgid "Show popup only on front page"
-msgstr ""
-
-#: acf/acf-popup.php:46
-msgid "Only show once"
-msgstr ""
-
-#: acf/acf-popup.php:57
-msgid "Show popup only once"
-msgstr ""
-
-#: acf/acf-popup.php:65
-msgid "Title"
-msgstr ""
-
-#: acf/acf-popup.php:84
-msgid "Content"
-msgstr ""
-
-#: otomaties-bootstrap-popup.php:65
+#: app/CustomPostTypes.php:19
 msgid "Popup"
 msgstr ""
 
-#: otomaties-bootstrap-popup.php:66
-msgid "Popup settings"
+#: app/CustomPostTypes.php:20
+msgid "Popups"
 msgstr ""
 
-#: templates/popup.php:25
+#: app/CustomPostTypes.php:44
+msgid "Primary"
+msgstr ""
+
+#: app/CustomPostTypes.php:45
+msgid "Secondary"
+msgstr ""
+
+#: app/CustomPostTypes.php:46
+msgid "Light"
+msgstr ""
+
+#: app/CustomPostTypes.php:47
+msgid "Dark"
+msgstr ""
+
+#: app/CustomPostTypes.php:48
+msgid "Danger"
+msgstr ""
+
+#: app/CustomPostTypes.php:49
+msgid "Warning"
+msgstr ""
+
+#: app/CustomPostTypes.php:50
+msgid "Success"
+msgstr ""
+
+#: app/CustomPostTypes.php:51
+msgid "Info"
+msgstr ""
+
+#: app/CustomPostTypes.php:56
+msgid "Enabled"
+msgstr ""
+
+#: app/CustomPostTypes.php:57
+msgid "Enable popup"
+msgstr ""
+
+#: app/CustomPostTypes.php:60
+msgid "Show on pages"
+msgstr ""
+
+#: app/CustomPostTypes.php:64
+msgid "Only show once"
+msgstr ""
+
+#: app/CustomPostTypes.php:65
+msgid "Show popup only once"
+msgstr ""
+
+#: app/CustomPostTypes.php:68
+msgid "Delay"
+msgstr ""
+
+#: app/CustomPostTypes.php:69
+msgid "In milliseconds"
+msgstr ""
+
+#: app/CustomPostTypes.php:72
+msgid "Close button"
+msgstr ""
+
+#: app/CustomPostTypes.php:74
+msgid "Show close button"
+msgstr ""
+
+#: app/CustomPostTypes.php:77
+msgid "Title"
+msgstr ""
+
+#: app/CustomPostTypes.php:80
+msgid "Buttons"
+msgstr ""
+
+#: app/CustomPostTypes.php:83
+msgid "button"
+msgstr ""
+
+#: app/CustomPostTypes.php:86
+msgid "Theme"
+msgstr ""
+
+#: app/CustomPostTypes.php:104
+msgid "Add New"
+msgstr ""
+
+#. translators: %s: singular post name
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:106 app/CustomPostTypes.php:179
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#. translators: %s: singular post name
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:108 app/CustomPostTypes.php:173
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:110
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#. translators: %s: singular post name
+#. translators: %s: plural post name
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:112 app/CustomPostTypes.php:114
+#: app/CustomPostTypes.php:175
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#. translators: %s: singular post name
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:116 app/CustomPostTypes.php:163
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#. translators: %s: plural post name to lower
+#: app/CustomPostTypes.php:118
+#, php-format
+msgid "No %s found."
+msgstr ""
+
+#. translators: %s: plural post name to lower
+#: app/CustomPostTypes.php:120
+#, php-format
+msgid "No %s found in trash."
+msgstr ""
+
+#. translators: %s: singular post name
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:122 app/CustomPostTypes.php:171
+#, php-format
+msgid "Parent %s:"
+msgstr ""
+
+#. translators: %s: singular post name
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:124 app/CustomPostTypes.php:167
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:126
+#, php-format
+msgid "%s Archives"
+msgstr ""
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:128
+#, php-format
+msgid "%s Attributes"
+msgstr ""
+
+#. translators: %s: singular post name to lower
+#: app/CustomPostTypes.php:130
+#, php-format
+msgid "Insert into %s"
+msgstr ""
+
+#. translators: %s: singular post name to lower
+#: app/CustomPostTypes.php:132
+#, php-format
+msgid "Uploaded to this %s"
+msgstr ""
+
+#. translators: %s: plural post name to lower
+#: app/CustomPostTypes.php:134
+#, php-format
+msgid "Filter %s list"
+msgstr ""
+
+#. translators: %s: singular post name
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:136 app/CustomPostTypes.php:193
+#, php-format
+msgid "%s list navigation"
+msgstr ""
+
+#. translators: %s: singular post name
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:138 app/CustomPostTypes.php:195
+#, php-format
+msgid "%s list"
+msgstr ""
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:140
+#, php-format
+msgid "%s published."
+msgstr ""
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:142
+#, php-format
+msgid "%s published privately."
+msgstr ""
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:144
+#, php-format
+msgid "%s reverted to draft."
+msgstr ""
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:146
+#, php-format
+msgid "%s scheduled."
+msgstr ""
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:148
+#, php-format
+msgid "%s updated."
+msgstr ""
+
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:165
+#, php-format
+msgid "Popular %s"
+msgstr ""
+
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:169
+#, php-format
+msgid "Parent %s"
+msgstr ""
+
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:177
+#, php-format
+msgid "Update %s"
+msgstr ""
+
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:181
+#, php-format
+msgid "New %s Name"
+msgstr ""
+
+#. translators: %s: plural taxonomy name to lower
+#: app/CustomPostTypes.php:183
+#, php-format
+msgid "Separate %s with commas"
+msgstr ""
+
+#. translators: %s: plural taxonomy name to lower
+#: app/CustomPostTypes.php:185
+#, php-format
+msgid "Add or remove %s"
+msgstr ""
+
+#. translators: %s: plural taxonomy name to lower
+#: app/CustomPostTypes.php:187
+#, php-format
+msgid "Choose from most used %s"
+msgstr ""
+
+#. translators: %s: plural taxonomy name to lower
+#: app/CustomPostTypes.php:189
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#. translators: %s: plural taxonomy name to lower
+#. translators: %s: singular taxonomy name to lower
+#: app/CustomPostTypes.php:191 app/CustomPostTypes.php:200
+#, php-format
+msgid "No %s"
+msgstr ""
+
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:198
+#, php-format
+msgid "&larr; Back to %s"
+msgstr ""
+
+#. translators: %s: singular taxonomy name to lower
+#: app/CustomPostTypes.php:202
+#, php-format
+msgid "Filter by %s"
+msgstr ""
+
+#: templates/popup.php:17
 msgid "Close"
 msgstr ""
 

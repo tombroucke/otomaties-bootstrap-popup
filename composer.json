@@ -11,6 +11,13 @@
   ],
   "type": "wordpress-plugin",
   "require": {
-    "composer/installers": "^2.0"
+    "composer/installers": "^2.0",
+    "johnbillion/extended-cpts": "^5.0",
+    "stoutlogic/acf-builder": "^1.12"
+  },
+  "autoload": {
+      "psr-4": {
+          "Otomaties\\BootstrapPopup\\": "app/"
+      }
   }
 }

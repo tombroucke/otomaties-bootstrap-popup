@@ -1,30 +1,23 @@
-<?php
-$title 				= get_field('popup_title', 'option');
-$content 			= get_field('popup_content', 'option');
-$show_once 			= get_field('popup_show_once', 'option');
-$delay 				= get_field('popup_delay', 'option') ?: 0;
-$hash				= substr(md5($title . $content), 0, 6);
-?>
-<!-- Modal -->
-<div class="modal fade" id="otomatiesModal" tabindex="-1" role="dialog" aria-labelledby="otomatiesModalTitle" aria-hidden="true" data-delay="<?php echo $delay; ?>" data-showonce="<?php echo ( $show_once ? $hash : ''); ?>">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<?php if( apply_filters( 'otomaties_popup_show_title', true ) ): ?>
-					<h5 class="modal-title" id="otomatiesModalTitle"><?php echo $title; ?></h5>
-				<?php endif; ?>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<?php echo apply_filters('otomaties_popup_header_close_button', '<span aria-hidden="true">&times;</span>'); ?>
-				</button>
-			</div>
-			<div class="modal-body">
-				<?php echo $content; ?>
-			</div>
-			<?php if( apply_filters( 'otomaties_popup_show_close_button', true ) ): ?>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal"><?php _e('Close', 'otomaties-popup'); ?></button>
-				</div>
-			<?php endif; ?>
-		</div>
-	</div>
+<div class="modal fade otomaties-bootstrap-popup" id="popup-<?php echo $popup->getId() ?>" tabindex="-1" role="dialog" aria-labelledby="popup-<?php echo $popup->getId() ?>Label" aria-hidden="true" data-delay="<?php echo $popup->delay(); ?>" data-hash="<?php echo $popup->hash(); ?>">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="popup-<?php echo $popup->getId() ?>Title"><?php echo $popup->title(); ?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php echo apply_filters('the_content', $popup->content()); ?>
+            </div>
+            <?php if (!empty($popup->buttons()) || $popup->showCloseButton()) : ?>
+                <div class="modal-footer">
+                    <?php foreach ($popup->buttons() as $button) : ?>
+                        <a href="<?php echo esc_url($button['link']); ?>" class="btn btn-<?php echo esc_attr($button['theme']); ?>" target="<?php echo esc_attr($button['target']); ?>"><?php echo esc_html($button['label']); ?></a>
+                    <?php endforeach; ?>
+                    <?php if ($popup->showCloseButton()) : ?>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><?php _e('Close', 'otomaties-popup'); ?></button>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>

@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Otomaties Bootstrap Popup\n"
-"POT-Creation-Date: 2020-04-29 15:42+0200\n"
-"PO-Revision-Date: 2020-04-29 15:44+0200\n"
-"Last-Translator: Tom Broucke <tom@tombrouckeBe>\n"
-"Language-Team: Tom Broucke <tom@tombrouckeBe>\n"
+"POT-Creation-Date: 2022-02-23 14:54+0100\n"
+"PO-Revision-Date: 2022-02-23 14:55+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: otomaties-bootstrap-popup.php\n"
@@ -19,49 +19,310 @@ msgstr ""
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
 "_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
 
-#: acf/acf-popup.php:8
-msgid "Enabled"
-msgstr "Ingeschakeld"
-
-#: acf/acf-popup.php:19
-msgid "Show popup"
-msgstr "Toon popup"
-
-#: acf/acf-popup.php:27
-msgid "Only on front page"
-msgstr "Enkel op de voorpagina"
-
-#: acf/acf-popup.php:38
-msgid "Show popup only on front page"
-msgstr "Pop-up enkel weergeven op de voorpagina"
-
-#: acf/acf-popup.php:46
-msgid "Only show once"
-msgstr "Laat slechts één keer zien"
-
-#: acf/acf-popup.php:57
-msgid "Show popup only once"
-msgstr "Pop-up slechts één keer weergeven"
-
-#: acf/acf-popup.php:65
-msgid "Title"
-msgstr "Titel"
-
-#: acf/acf-popup.php:84
-msgid "Content"
-msgstr "Inhoud"
-
-#: otomaties-bootstrap-popup.php:65
+#: app/CustomPostTypes.php:19
 msgid "Popup"
 msgstr "Popup"
 
-#: otomaties-bootstrap-popup.php:66
-msgid "Popup settings"
-msgstr "Popup instellingen"
+#: app/CustomPostTypes.php:20
+msgid "Popups"
+msgstr "Pop ups"
 
-#: templates/popup.php:25
+#: app/CustomPostTypes.php:44
+msgid "Primary"
+msgstr "Primair"
+
+#: app/CustomPostTypes.php:45
+msgid "Secondary"
+msgstr "Secundair"
+
+#: app/CustomPostTypes.php:46
+msgid "Light"
+msgstr "Light"
+
+#: app/CustomPostTypes.php:47
+msgid "Dark"
+msgstr "Donker"
+
+#: app/CustomPostTypes.php:48
+msgid "Danger"
+msgstr "Gevaar"
+
+#: app/CustomPostTypes.php:49
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: app/CustomPostTypes.php:50
+msgid "Success"
+msgstr "Gelukt"
+
+#: app/CustomPostTypes.php:51
+msgid "Info"
+msgstr "Info"
+
+#: app/CustomPostTypes.php:56
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: app/CustomPostTypes.php:57
+msgid "Enable popup"
+msgstr "Popup inschakelen"
+
+#: app/CustomPostTypes.php:60
+msgid "Show on pages"
+msgstr "Toon op pagina’s"
+
+#: app/CustomPostTypes.php:64
+msgid "Only show once"
+msgstr "Laat maar één keer zien"
+
+#: app/CustomPostTypes.php:65
+msgid "Show popup only once"
+msgstr "Toon popup slechts eenmaal"
+
+#: app/CustomPostTypes.php:68
+msgid "Delay"
+msgstr "Vertraging"
+
+#: app/CustomPostTypes.php:69
+msgid "In milliseconds"
+msgstr "In milliseconden"
+
+#: app/CustomPostTypes.php:72
+msgid "Close button"
+msgstr "Afsluitknop"
+
+#: app/CustomPostTypes.php:74
+msgid "Show close button"
+msgstr "Toon sluit knop"
+
+#: app/CustomPostTypes.php:77
+msgid "Title"
+msgstr "Titel"
+
+#: app/CustomPostTypes.php:80
+msgid "Buttons"
+msgstr "Knoppen"
+
+#: app/CustomPostTypes.php:83
+msgid "button"
+msgstr "knop"
+
+#: app/CustomPostTypes.php:86
+msgid "Theme"
+msgstr "Thema"
+
+#: app/CustomPostTypes.php:104
+msgid "Add New"
+msgstr "Nieuw toevoegen"
+
+#. translators: %s: singular post name
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:106 app/CustomPostTypes.php:179
+#, php-format
+msgid "Add New %s"
+msgstr "Nieuw(e) %s toevoegen"
+
+#. translators: %s: singular post name
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:108 app/CustomPostTypes.php:173
+#, php-format
+msgid "Edit %s"
+msgstr "%s bewerken"
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:110
+#, php-format
+msgid "New %s"
+msgstr "Nieuw(e) %s"
+
+#. translators: %s: singular post name
+#. translators: %s: plural post name
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:112 app/CustomPostTypes.php:114
+#: app/CustomPostTypes.php:175
+#, php-format
+msgid "View %s"
+msgstr "Bekijk %s"
+
+#. translators: %s: singular post name
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:116 app/CustomPostTypes.php:163
+#, php-format
+msgid "Search %s"
+msgstr "%s zoeken"
+
+#. translators: %s: plural post name to lower
+#: app/CustomPostTypes.php:118
+#, php-format
+msgid "No %s found."
+msgstr "Geen %s gevonden."
+
+#. translators: %s: plural post name to lower
+#: app/CustomPostTypes.php:120
+#, php-format
+msgid "No %s found in trash."
+msgstr "Geen %s gevonden in de prullenbak."
+
+#. translators: %s: singular post name
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:122 app/CustomPostTypes.php:171
+#, php-format
+msgid "Parent %s:"
+msgstr "Bovenliggend(e) %s:"
+
+#. translators: %s: singular post name
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:124 app/CustomPostTypes.php:167
+#, php-format
+msgid "All %s"
+msgstr "Alle %s"
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:126
+#, php-format
+msgid "%s Archives"
+msgstr "%s Archieven"
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:128
+#, php-format
+msgid "%s Attributes"
+msgstr "%s kenmerken"
+
+#. translators: %s: singular post name to lower
+#: app/CustomPostTypes.php:130
+#, php-format
+msgid "Insert into %s"
+msgstr "Toevoegen aan %s"
+
+#. translators: %s: singular post name to lower
+#: app/CustomPostTypes.php:132
+#, php-format
+msgid "Uploaded to this %s"
+msgstr "Geupload naar deze %s"
+
+#. translators: %s: plural post name to lower
+#: app/CustomPostTypes.php:134
+#, php-format
+msgid "Filter %s list"
+msgstr "Filter %s lijst"
+
+#. translators: %s: singular post name
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:136 app/CustomPostTypes.php:193
+#, php-format
+msgid "%s list navigation"
+msgstr "Navigatie door %slijst"
+
+#. translators: %s: singular post name
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:138 app/CustomPostTypes.php:195
+#, php-format
+msgid "%s list"
+msgstr "%s lijst"
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:140
+#, php-format
+msgid "%s published."
+msgstr "%s gepubliceerd."
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:142
+#, php-format
+msgid "%s published privately."
+msgstr "%s privé gepubliceerd."
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:144
+#, php-format
+msgid "%s reverted to draft."
+msgstr "%s teruggezet naar concept."
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:146
+#, php-format
+msgid "%s scheduled."
+msgstr "%s gepland."
+
+#. translators: %s: singular post name
+#: app/CustomPostTypes.php:148
+#, php-format
+msgid "%s updated."
+msgstr "%s bijgewerkt."
+
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:165
+#, php-format
+msgid "Popular %s"
+msgstr "Populair %s"
+
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:169
+#, php-format
+msgid "Parent %s"
+msgstr "Bovenliggend(e) %s"
+
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:177
+#, php-format
+msgid "Update %s"
+msgstr "Bijwerken %s"
+
+#. translators: %s: singular taxonomy name
+#: app/CustomPostTypes.php:181
+#, php-format
+msgid "New %s Name"
+msgstr "Nieuw(e) %s naam"
+
+#. translators: %s: plural taxonomy name to lower
+#: app/CustomPostTypes.php:183
+#, php-format
+msgid "Separate %s with commas"
+msgstr "Splits %s met komma’s"
+
+#. translators: %s: plural taxonomy name to lower
+#: app/CustomPostTypes.php:185
+#, php-format
+msgid "Add or remove %s"
+msgstr "%s toevoegen of verwijderen"
+
+#. translators: %s: plural taxonomy name to lower
+#: app/CustomPostTypes.php:187
+#, php-format
+msgid "Choose from most used %s"
+msgstr "Kies uit de meest gebruikte %s"
+
+#. translators: %s: plural taxonomy name to lower
+#: app/CustomPostTypes.php:189
+#, php-format
+msgid "No %s found"
+msgstr "Geen %s gevonden"
+
+#. translators: %s: plural taxonomy name to lower
+#. translators: %s: singular taxonomy name to lower
+#: app/CustomPostTypes.php:191 app/CustomPostTypes.php:200
+#, php-format
+msgid "No %s"
+msgstr "Geen %s"
+
+#. translators: %s: plural taxonomy name
+#: app/CustomPostTypes.php:198
+#, php-format
+msgid "&larr; Back to %s"
+msgstr "&larr; Terug naar %s"
+
+#. translators: %s: singular taxonomy name to lower
+#: app/CustomPostTypes.php:202
+#, php-format
+msgid "Filter by %s"
+msgstr "Filteren op %s"
+
+#: templates/popup.php:17
 msgid "Close"
 msgstr "Sluiten"
 
@@ -71,7 +332,7 @@ msgstr "Otomaties Bootstrap Popup"
 
 #. Description of the plugin/theme
 msgid "Add a configurable popup to your website"
-msgstr "Een configureerbare popup toevoegen aan uw website"
+msgstr "Voeg een configureerbare popup toe aan uw website"
 
 #. Author of the plugin/theme
 msgid "Tom Broucke"

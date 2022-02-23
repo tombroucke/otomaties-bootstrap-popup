@@ -1,21 +1,32 @@
 import Cookie from './cookie';
+import { Modal, Utils } from 'bootstrap';
 
-jQuery(document).ready(function($){
-	let cookie;
-	if( $('#otomatiesModal').length ) {
-		const show_once = $('#otomatiesModal').data('showonce');
-		const delay = $('#otomatiesModal').data('delay');
-		if( show_once ) {
-			cookie = new Cookie("saw_" + show_once)
 
-			if( cookie.get() != "" ) {
-				return false;
-			}
+window.addEventListener('DOMContentLoaded', (event) => {
+	let popupIndex = 0;
+	const popups = document.querySelectorAll('.otomaties-bootstrap-popup');
 
-			cookie.set(this.show_once)
-		}
+	if (popups.length > 0) {
+		showPopup();
+	}
+
+	function showPopup() {
+		const popup = popups[popupIndex];
+		popupIndex++;
+
+		const modal = new Modal(popup);
+		
+		const hash = popup.getAttribute('data-hash');
+		const delay = popup.getAttribute('data-delay');
+		let cookie = new Cookie("saw_popup_" + hash)
+		cookie.set(hash)
 		window.setTimeout(function(){
-			$('#otomatiesModal').modal('show')
+			modal.show();
+			if (popupIndex < popups.length) {
+				popup.addEventListener('hidden.bs.modal', function (event) {
+					showPopup();
+				});
+			}
 		}, delay);
 	}
 });
