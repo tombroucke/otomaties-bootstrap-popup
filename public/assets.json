@@ -1,0 +1,9 @@
+{
+  "main": {
+    "js": "js/main.876f7810599e697dd73e.js"
+  },
+  "admin": {
+    "css": "css/admin.min.css",
+    "js": "js/admin.31d6cfe0d16ae931b73c.js"
+  }
+}
