@@ -22,23 +22,28 @@ class Popup extends Abstracts\Post
         return 'popup';
     }
 
-    public function delay() {
+    public function delay()
+    {
         return get_field('delay', $this->getId());
     }
 
-    public function showOnce() {
+    public function showOnce()
+    {
         return get_field('show_once', $this->getId());
     }
 
-    public function title() : string {
+    public function title() : string
+    {
         return get_field('title', $this->getId());
     }
 
-    public function showCloseButton() {
+    public function showCloseButton()
+    {
         return get_field('show_close_button', $this->getId());
     }
 
-    public function buttons() {
+    public function buttons()
+    {
         $buttons = [];
         $buttons = array_filter((array)get_field('buttons', $this->getId()));
         return array_map(function ($button) {
@@ -51,11 +56,18 @@ class Popup extends Abstracts\Post
         }, $buttons);
     }
 
-    public function hash() {
+    public function enabled()
+    {
+        return $this->get('enabled');
+    }
+
+    public function hash()
+    {
         return substr(md5($this->title() . $this->content()), 0, 6);
     }
 
-    public static function eligiblePopups() {
+    public static function eligiblePopups()
+    {
         $id = get_the_ID();
         $metaQuery = [
             'relation' => 'AND',
@@ -87,7 +99,7 @@ class Popup extends Abstracts\Post
         $args['meta_query'] = $metaQuery;
 
         $popups = self::find($args);
-        return array_filter($popups, function ($popup){
+        return array_filter($popups, function ($popup) {
             return !$popup->showOnce() || !isset($_COOKIE['saw_popup_' . $popup->hash()]);
         });
     }
