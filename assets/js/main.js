@@ -18,15 +18,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		
 		const hash = popup.getAttribute('data-hash');
 		const delay = popup.getAttribute('data-delay');
+		const show_once = popup.getAttribute('data-show-once');
+		const saw_popup = popup.getAttribute('data-saw-popup');
+
 		let cookie = new Cookie("saw_popup_" + hash)
 		cookie.set(hash)
-		window.setTimeout(function(){
-			modal.show();
-			if (popupIndex < popups.length) {
-				popup.addEventListener('hidden.bs.modal', function (event) {
-					showPopup();
-				});
-			}
-		}, delay);
+
+		if (!show_once || !saw_popup) {
+			window.setTimeout(function(){
+				modal.show();
+				if (popupIndex < popups.length) {
+					popup.addEventListener('hidden.bs.modal', function (event) {
+						showPopup();
+					});
+				}
+			}, delay);
+		}
 	}
 });

@@ -99,8 +99,6 @@ class Popup extends Abstracts\Post
         $args['meta_query'] = $metaQuery;
 
         $popups = self::find($args);
-        return array_filter($popups, function ($popup) {
-            return !$popup->showOnce() || !isset($_COOKIE['saw_popup_' . $popup->hash()]);
-        });
+        return $popups;
     }
 }
