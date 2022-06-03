@@ -29,3 +29,9 @@ modal: Modal,
 const bootstrapLoadedEvent = new CustomEvent('BootstrapLoaded', {detail: {components : bootstrapComponents}});
 window.dispatchEvent(bootstrapLoadedEvent);
 ```
+
+## Filters
+
+Filter available bootstrap themes
+
+`otomaties_bootstrap_popup_button_themes`
