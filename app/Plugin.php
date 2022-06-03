@@ -55,6 +55,7 @@ class Plugin
         $this->defineAdminHooks();
         $this->defineFrontendHooks();
         $this->definePostTypeHooks();
+        $this->addWidgets();
     }
 
     /**
@@ -108,6 +109,14 @@ class Plugin
         $this->loader->add_action('wp_enqueue_scripts', $frontend, 'enqueueScripts', 999);
         $this->loader->add_action('wp_footer', $frontend, 'renderPopups');
     }
+
+    private function addWidgets()
+    {
+        add_action('widgets_init', function () {
+            register_widget('Otomaties\\BootstrapPopup\\Widgets\\PopupTrigger');
+        });
+    }
+
     /**
      * Run the loader to execute all of the hooks with WordPress.
      *
@@ -128,7 +137,8 @@ class Plugin
         return $this->loader;
     }
 
-    public function getPluginName() {
+    public function getPluginName()
+    {
         return $this->pluginName;
     }
 

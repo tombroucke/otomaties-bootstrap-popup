@@ -84,7 +84,8 @@ class Frontend
          */
 
         if (!empty(Popup::eligiblePopups())) {
-            wp_enqueue_script($this->pluginName, Assets::find('js/main.js'), array( 'jquery' ), null, true);
+            $loadBootstrap = apply_filters('otomaties_bootstrap_popup_load_bootstrap', true);
+            wp_enqueue_script($this->pluginName, ($loadBootstrap ? Assets::find('js/main.js') : Assets::find('js/main_no_bootstrap.js')), array( 'jquery' ), null, true);
         }
     }
 

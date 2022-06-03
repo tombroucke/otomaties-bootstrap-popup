@@ -1,20 +1,31 @@
-# Plugin boilerplate
+# Otomaties Bootstrap Popup
 
-## Clone
+## Load Bootstrap JS from theme or other plugin
 
-```bash
-git clone git@github.com:tombroucke/plugin-boilerplate.git
+If you're loading bootstrap JS in your theme or another plugin, there's no need to load it twice. Loading it twice leads to slower loading times and could cause conflicts.
+
+Make sure otomaties-bootstrap-popup is loaded first
+```php
+if (class_exists('Otomaties\\Events\\Plugin')) {
+	bundle('app')->enqueueCss()->enqueueJs(true, ['otomaties-bootstrap-popup']);
+} else {
+	bundle('app')->enqueue();
+}
 ```
 
-## Rename
-```bash
-PLUGIN_NAME="my-plugin"
-PLUGIN_NAMESPACE="MyPlugin"
-rm -rf plugin-boilerplate/.git
-mv plugin-boilerplate/plugin-boilerplate.php plugin-boilerplate/"$PLUGIN_NAME".php
-mv plugin-boilerplate "$PLUGIN_NAME"
-find "$PLUGIN_NAME" -type f -name '*.php' -not -path '"$PLUGIN_NAME"/vendor/*' -exec sed -i '' "s/PluginBoilerplate/${PLUGIN_NAMESPACE}/g" {} \;
-find "$PLUGIN_NAME" -type f -name '*.php' -not -path '"$PLUGIN_NAME"/vendor/*' -exec sed -i '' "s/plugin-boilerplate/${PLUGIN_NAME}/g" {} \;
-sed -i '' "s/PluginBoilerplate/${PLUGIN_NAMESPACE}/g" "$PLUGIN_NAME"/composer.json
+Load javascript without bootstrap
+```php
+add_filter('otomaties_bootstrap_popup_load_bootstrap', '__return_false');
 ```
 
+Pass modal component through a custom BootstrapLoaded event
+```javascript
+import { Modal } from 'bootstrap';
+
+const bootstrapComponents = {
+modal: Modal,
+}
+
+const bootstrapLoadedEvent = new CustomEvent('BootstrapLoaded', {detail: {components : bootstrapComponents}});
+window.dispatchEvent(bootstrapLoadedEvent);
+```

@@ -1,6 +1,9 @@
 {
   "main": {
-    "js": "js/main.876f7810599e697dd73e.js"
+    "js": "js/main.df4081e802921c673aa0.js"
+  },
+  "main_no_bootstrap": {
+    "js": "js/main_no_bootstrap.aa8c5bacac0871ee0097.js"
   },
   "admin": {
     "css": "css/admin.min.css",

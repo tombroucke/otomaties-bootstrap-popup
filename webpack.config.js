@@ -10,6 +10,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = (env, argv) => ({
 	entry: {
 		main: './assets/js/main.js',
+		main_no_bootstrap: './assets/js/main-no-bootstrap.js',
 		admin: './assets/js/admin.js',
 	},
 	output: {
@@ -89,7 +90,7 @@ module.exports = (env, argv) => ({
 	}),
 	new BrowserSyncPlugin({
 		port: 3000,
-		proxy: 'https://de-ingang.local',
+		proxy: 'https://wervel.local',
 	}),
 	new StyleLintPlugin({
 		failOnError: argv.mode === 'production' ? true : false,

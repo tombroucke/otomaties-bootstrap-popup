@@ -1,4 +1,4 @@
-<div class="modal fade otomaties-bootstrap-popup" id="popup-<?php echo $popup->getId() ?>" tabindex="-1" role="dialog" aria-labelledby="popup-<?php echo $popup->getId() ?>Label" aria-hidden="true" data-delay="<?php echo $popup->delay(); ?>" data-hash="<?php echo $popup->hash(); ?>">
+<div class="modal fade otomaties-bootstrap-popup" id="popup-<?php echo $popup->getId() ?>" tabindex="-1" role="dialog" aria-labelledby="popup-<?php echo $popup->getId() ?>Label" aria-hidden="true" data-show-once="<?php echo $popup->showOnce(); ?>" data-delay="<?php echo $popup->delay(); ?>" data-hash="<?php echo $popup->hash(); ?>">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
