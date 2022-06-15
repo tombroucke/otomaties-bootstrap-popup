@@ -25,6 +25,7 @@ class CustomPostTypes
                 'show_in_feed' => true,
                 'show_in_rest' => true,
                 'publicly_queryable' => false,
+                'exclude_from_search' => true,
                 'show_in_seach' => false,
                 'menu_icon' => 'dashicons-megaphone',
                 'labels' => $this->postTypeLabels($postSingularName, $postPluralName),
