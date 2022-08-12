@@ -19,5 +19,10 @@
       "psr-4": {
           "Otomaties\\BootstrapPopup\\": "app/"
       }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
   }
 }
