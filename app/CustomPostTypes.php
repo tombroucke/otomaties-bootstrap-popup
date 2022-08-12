@@ -22,11 +22,15 @@ class CustomPostTypes
         register_extended_post_type(
             $postType,
             [
-                'show_in_feed' => true,
+                'show_in_feed' => false,
                 'show_in_rest' => true,
                 'publicly_queryable' => false,
                 'exclude_from_search' => true,
                 'show_in_seach' => false,
+                'has_archive' => false,
+                'public' => false,
+                'show_ui' => true,
+                'show_in_nav_menus' => true,
                 'menu_icon' => 'dashicons-megaphone',
                 'labels' => $this->postTypeLabels($postSingularName, $postPluralName),
                 'support' => ['title', 'editor', 'author', 'revisions']
