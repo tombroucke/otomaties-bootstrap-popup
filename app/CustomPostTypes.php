@@ -26,7 +26,6 @@ class CustomPostTypes
                 'show_in_rest' => true,
                 'publicly_queryable' => false,
                 'exclude_from_search' => true,
-                'show_in_seach' => false,
                 'has_archive' => false,
                 'public' => false,
                 'show_ui' => true,
