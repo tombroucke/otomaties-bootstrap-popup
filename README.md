@@ -6,7 +6,7 @@ If you're loading bootstrap JS in your theme or another plugin, there's no need 
 
 Make sure otomaties-bootstrap-popup is loaded first
 ```php
-if (class_exists('Otomaties\\Events\\Plugin')) {
+if (class_exists('Otomaties\\BootstrapPopup\\Plugin')) {
     bundle('app')->enqueueCss()->enqueueJs(true, ['otomaties-bootstrap-popup']);
 } else {
     bundle('app')->enqueue();
