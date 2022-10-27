@@ -35,3 +35,11 @@ window.dispatchEvent(bootstrapLoadedEvent);
 Filter available bootstrap themes
 
 `otomaties_bootstrap_popup_button_themes`
+
+## Center popup
+```php
+add_filter('otomaties_bootstrap_popup_modal_dialog_classes', function ($classes) {
+    $classes .= ' modal-dialog-centered';
+    return $classes;
+});
+```
