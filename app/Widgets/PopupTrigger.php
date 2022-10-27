@@ -96,8 +96,9 @@ class PopupTrigger extends \WP_Widget
                     <?php
                         $id = $popup->getId();
                         $title = $popup->title() != '' ? $popup->title() : get_the_title($id);
+                        $popupId = $instance['popup_id'] ?? null;
                     ?>
-                    <option value="<?php echo esc_attr($id); ?>" <?php selected($id, $instance['popup_id']) ?>><?php echo esc_attr($title); ?></option>
+                    <option value="<?php echo esc_attr($id); ?>" <?php selected($id, $popupId) ?>><?php echo esc_attr($title); ?></option>
                 <?php endforeach; ?>
             </select>
         </p>
