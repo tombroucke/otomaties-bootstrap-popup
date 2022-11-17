@@ -81,7 +81,7 @@ abstract class Post
      * Get date created
      *
      * @param string $format
-     * @return void
+     * @return string|null
      */
     public function date(string $format = '') : ?string
     {
@@ -93,7 +93,7 @@ abstract class Post
      *
      * @param string $key The meta key.
      * @param string $value The meta value.
-     * @return integer\boolean Meta ID if the key didn't exist, true on successful update, false on failure or if the value passed to the function is the same as the one that is already in the database.
+     * @return int|boolean Meta ID if the key didn't exist, true on successful update, false on failure or if the value passed to the function is the same as the one that is already in the database.
      */
     public function set(string $key, string $value)
     {
@@ -105,7 +105,7 @@ abstract class Post
      *
      * @param string $key The meta key.
      * @param string  $value The meta value.
-     * @return integer\boolean Meta ID on success, false on failure.
+     * @return int|boolean Meta ID on success, false on failure.
      */
     public function addMeta(string $key, string $value)
     {
