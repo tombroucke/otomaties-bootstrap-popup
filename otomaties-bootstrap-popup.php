@@ -69,7 +69,7 @@ class Plugin
 
         $enabledPages = array_map(function ($page) {
             return $page->ID;
-        }, (array)get_field('popup_show_on_pages', 'option'));
+        }, array_filter((array)get_field('popup_show_on_pages', 'option')));
 
         
         if (!get_field('popup_enabled', 'option')) {
