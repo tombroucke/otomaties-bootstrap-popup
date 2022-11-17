@@ -4,7 +4,7 @@
  * Description: Add a configurable popup to your website
  * Author: Tom Broucke
  * Author URI: https://tombroucke.be
- * Version:           1.0.6
+ * Version:           1.0.7
  * License: GPL2
  * Text Domain: otomaties-popup
  * Domain Path: languages
