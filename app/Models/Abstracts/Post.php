@@ -172,9 +172,9 @@ abstract class Post
     /**
      * Get post author
      *
-     * @return int
+     * @return string
      */
-    public function author() : int
+    public function author() : string
     {
         return get_post_field('post_author', $this->getId());
     }

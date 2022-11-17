@@ -103,5 +103,6 @@ class PopupTrigger extends \WP_Widget
             </select>
         </p>
         <?php
+        return '';
     }
 }

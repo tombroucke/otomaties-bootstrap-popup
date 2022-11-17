@@ -24,23 +24,14 @@ class Frontend
     private $pluginName;
 
     /**
-     * The version of this plugin.
-     *
-     * @var      string    $version    The current version of this plugin.
-     */
-    private $version;
-
-    /**
      * Initialize the class and set its properties.
      *
      * @param      string    $pluginName       The name of the plugin.
-     * @param      string    $version    The version of this plugin.
      */
-    public function __construct($pluginName, $version)
+    public function __construct($pluginName)
     {
 
         $this->pluginName = $pluginName;
-        $this->version = $version;
     }
 
     /**

@@ -33,7 +33,7 @@ class Plugin
     /**
      * The name of the plugin
      *
-     * @var [type]
+     * @var string
      */
     protected $pluginName;
 
@@ -104,7 +104,7 @@ class Plugin
      */
     private function defineFrontendHooks()
     {
-        $frontend = new Frontend($this->getPluginName(), $this->getVersion());
+        $frontend = new Frontend($this->getPluginName());
         $this->loader->add_action('wp_enqueue_scripts', $frontend, 'enqueueStyles');
         $this->loader->add_action('wp_enqueue_scripts', $frontend, 'enqueueScripts', 999);
         $this->loader->add_action('wp_footer', $frontend, 'renderPopups');
