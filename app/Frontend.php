@@ -19,14 +19,14 @@ class Frontend
     /**
      * The ID of this plugin.
      *
-     * @var      string    $pluginName    The ID of this plugin.
+     * @var string $pluginName The ID of this plugin.
      */
     private $pluginName;
 
     /**
      * Initialize the class and set its properties.
      *
-     * @param      string    $pluginName       The name of the plugin.
+     * @param string $pluginName The name of the plugin.
      */
     public function __construct($pluginName)
     {
@@ -37,8 +37,9 @@ class Frontend
     /**
      * Register the stylesheets for the public-facing side of the site.
      *
+     * @return void
      */
-    public function enqueueStyles()
+    public function enqueueStyles() : void
     {
 
         /**
@@ -58,8 +59,9 @@ class Frontend
     /**
      * Register the JavaScript for the public-facing side of the site.
      *
+     * @return void
      */
-    public function enqueueScripts()
+    public function enqueueScripts() : void
     {
 
         /**
@@ -74,13 +76,14 @@ class Frontend
          * class.
          */
 
-        if (!empty(Popup::eligiblePopups())) {
+        if (count(Popup::eligiblePopups()) > 0) {
             $loadBootstrap = apply_filters('otomaties_bootstrap_popup_load_bootstrap', true);
             wp_enqueue_script($this->pluginName, ($loadBootstrap ? Assets::find('js/main.js') : Assets::find('js/main_no_bootstrap.js')), array( 'jquery' ), null, true);
         }
     }
 
-    public function renderPopups() {
+    public function renderPopups() : void
+    {
         $popups = Popup::eligiblePopups();
         foreach ($popups as $popup) {
             include(dirname(__FILE__, 2) . '/templates/popup.php');

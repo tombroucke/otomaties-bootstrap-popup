@@ -8,7 +8,7 @@ export default function showPopups(popups, popupIndex, bootstrapModal) {
 
 	const hash = popup.getAttribute('data-hash');
 	const delay = popup.getAttribute('data-delay');
-	const showOnce = popup.getAttribute('data-show-once');
+	const showOnce = Boolean(Number(popup.getAttribute('data-show-once')));
 	const cookie = new Cookie('saw_popup');
 	const cookieContent = cookie.get() != '' ? JSON.parse(cookie.get()) : [];
 	const sawPopup = cookieContent.includes(hash);
@@ -18,6 +18,7 @@ export default function showPopups(popups, popupIndex, bootstrapModal) {
 		cookie.set(JSON.stringify(cookieContent));
 	}
 
+	console.log(showOnce);
 	if (!showOnce || !sawPopup) {
 		window.setTimeout(function () {
 			modal.show();

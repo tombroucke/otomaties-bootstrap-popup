@@ -44,8 +44,9 @@ class Admin
     /**
      * Register the stylesheets for the admin area.
      *
+     * @return void
      */
-    public function enqueueStyles()
+    public function enqueueStyles() : void
     {
 
         /**
@@ -66,8 +67,9 @@ class Admin
     /**
      * Register the JavaScript for the admin area.
      *
+     * @return void
      */
-    public function enqueueScripts()
+    public function enqueueScripts() : void
     {
 
         /**

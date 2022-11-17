@@ -11,6 +11,12 @@ namespace Otomaties\BootstrapPopup;
 
 class Assets
 {
+    /**
+     * Get full asset url
+     *
+     * @param string $filename
+     * @return string
+     */
     public static function find(string $filename)
     {
         $filename = rtrim(ltrim($filename, '/'), '/');

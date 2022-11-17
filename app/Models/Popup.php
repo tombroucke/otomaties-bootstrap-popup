@@ -1,13 +1,14 @@
 <?php
 namespace Otomaties\BootstrapPopup\Models;
 
+use Otomaties\WpModels\PostType;
+
 if (! defined('ABSPATH')) {
     exit;
 }
 
-class Popup extends Abstracts\Post
+class Popup extends PostType
 {
-
     /**
      * Construct parent
      * @param int $id post_id
@@ -22,27 +23,32 @@ class Popup extends Abstracts\Post
         return 'popup';
     }
 
-    public function delay()
+    public function delay() : int
     {
-        return get_field('delay', $this->getId());
+        return (int)$this->meta()->get('delay');
     }
 
-    public function showOnce()
+    public function showOnce() : bool
     {
-        return get_field('show_once', $this->getId());
+        return (bool)$this->meta()->get('show_once');
     }
 
     public function title() : string
     {
-        return get_field('title', $this->getId());
+        return $this->meta()->get('title');
     }
 
-    public function showCloseButton()
+    public function showCloseButton() : bool
     {
-        return get_field('show_close_button', $this->getId());
+        return (bool)$this->meta()->get('show_close_button');
     }
 
-    public function buttons()
+    /**
+     * Get all popup buttons
+     *
+     * @return array<array<string, mixed>>
+     */
+    public function buttons() : array
     {
         $buttons = [];
         $buttons = array_filter((array)get_field('buttons', $this->getId()));
@@ -56,16 +62,21 @@ class Popup extends Abstracts\Post
         }, $buttons);
     }
 
-    public function enabled()
+    public function enabled() : bool
     {
-        return $this->get('enabled');
+        return (bool)$this->meta()->get('enabled');
     }
 
-    public function hash()
+    public function hash() : string
     {
-        return substr(md5($this->title() . $this->content()), 0, 6);
+        return substr(hash('sha1', $this->title() . $this->content()), 0, 6);
     }
 
+    /**
+     * Get all eligible popups for a certain page
+     *
+     * @return \Otomaties\WpModels\Collection<int, Popup>
+     */
     public static function eligiblePopups()
     {
         $id = get_the_ID();
@@ -97,8 +108,7 @@ class Popup extends Abstracts\Post
             ];
         }
         $args['meta_query'] = $metaQuery;
-
-        $popups = self::find($args);
+        $popups = Popup::find($args);
         return $popups;
     }
 }

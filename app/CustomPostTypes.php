@@ -11,8 +11,10 @@ class CustomPostTypes
 
     /**
      * Register post type popup
+     *
+     * @return void
      */
-    public function addPopups()
+    public function addPopups() : void
     {
         $postType = 'popup';
         $slug = 'popup';
@@ -42,7 +44,12 @@ class CustomPostTypes
         );
     }
 
-    public function addPopupFields()
+    /**
+     * Add fields to popup post type
+     *
+     * @return void
+     */
+    public function addPopupFields() : void
     {
         $themeChoices = apply_filters('otomaties_bootstrap_popup_button_themes', [
             'primary' => __('Primary', 'otomaties-popup'),
@@ -100,9 +107,9 @@ class CustomPostTypes
      *
      * @param  string $singular_name The singular name for the post type.
      * @param  string $plural_name   The plural name for the post type.
-     * @return array
+     * @return array<string, string>
      */
-    private function postTypeLabels($singular_name, $plural_name)
+    private function postTypeLabels($singular_name, $plural_name) : array
     {
         return [
             'add_new'                  => __('Add New', 'otomaties-popup'),

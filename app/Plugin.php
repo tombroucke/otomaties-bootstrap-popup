@@ -44,6 +44,7 @@ class Plugin
      * Load the dependencies, define the locale, and set the hooks for the admin area and
      * the public-facing side of the site.
      *
+     * @param array<string, mixed> $pluginData
      */
     public function __construct($pluginData)
     {
@@ -65,12 +66,12 @@ class Plugin
      * with WordPress.
      *
      */
-    private function setLocale()
+    private function setLocale() : void
     {
 
         $plugin_i18n = new I18n();
 
-        $this->loader->add_action('plugins_loaded', $plugin_i18n, 'loadTextdomain');
+        $this->loader->addAction('plugins_loaded', $plugin_i18n, 'loadTextdomain');
     }
 
     /**
@@ -78,23 +79,23 @@ class Plugin
      * of the plugin.
      *
      */
-    private function defineAdminHooks()
+    private function defineAdminHooks() : void
     {
 
         $admin = new Admin($this->getPluginName(), $this->getVersion());
-        $this->loader->add_action('admin_enqueue_scripts', $admin, 'enqueueStyles');
-        $this->loader->add_action('admin_enqueue_scripts', $admin, 'enqueueScripts');
+        // $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueStyles');
+        // $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueScripts');
     }
 
     /**
      * Register post types
      *
      */
-    private function definePostTypeHooks()
+    private function definePostTypeHooks() : void
     {
         $cpts = new CustomPostTypes();
-        $this->loader->add_action('init', $cpts, 'addPopups');
-        $this->loader->add_action('acf/init', $cpts, 'addPopupFields');
+        $this->loader->addAction('init', $cpts, 'addPopups');
+        $this->loader->addAction('acf/init', $cpts, 'addPopupFields');
     }
 
     /**
@@ -102,15 +103,15 @@ class Plugin
      * of the plugin.
      *
      */
-    private function defineFrontendHooks()
+    private function defineFrontendHooks() : void
     {
         $frontend = new Frontend($this->getPluginName());
-        $this->loader->add_action('wp_enqueue_scripts', $frontend, 'enqueueStyles');
-        $this->loader->add_action('wp_enqueue_scripts', $frontend, 'enqueueScripts', 999);
-        $this->loader->add_action('wp_footer', $frontend, 'renderPopups');
+        $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueStyles');
+        $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueScripts', 999);
+        $this->loader->addAction('wp_footer', $frontend, 'renderPopups');
     }
 
-    private function addWidgets()
+    private function addWidgets() : void
     {
         add_action('widgets_init', function () {
             register_widget('Otomaties\\BootstrapPopup\\Widgets\\PopupTrigger');
@@ -121,7 +122,7 @@ class Plugin
      * Run the loader to execute all of the hooks with WordPress.
      *
      */
-    public function run()
+    public function run() : void
     {
         $this->loader->run();
     }
@@ -129,14 +130,20 @@ class Plugin
     /**
      * The reference to the class that orchestrates the hooks with the plugin.
      *
-     * @since     1.0.0
-     * @return    Loader    Orchestrates the hooks of the plugin.
+     * @since 1.0.0
+     * @return Loader Orchestrates the hooks of the plugin.
      */
     public function getLoader()
     {
         return $this->loader;
     }
 
+    /**
+     * Retrieve the name of the plugin.
+     *
+     * @since 1.0.0
+     * @return string The name of the plugin.
+     */
     public function getPluginName()
     {
         return $this->pluginName;

@@ -34,7 +34,7 @@ register_deactivation_hook(__FILE__, '\\Otomaties\\BootstrapPopup\\Deactivator::
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  */
-function init()
+function init() : void
 {
     if (! function_exists('get_plugin_data')) {
         require_once(ABSPATH . 'wp-admin/includes/plugin.php');
