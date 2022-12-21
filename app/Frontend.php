@@ -78,7 +78,7 @@ class Frontend
 
         if (count(Popup::eligiblePopups()) > 0) {
             $loadBootstrap = apply_filters('otomaties_bootstrap_popup_load_bootstrap', true);
-            wp_enqueue_script($this->pluginName, ($loadBootstrap ? Assets::find('js/main.js') : Assets::find('js/main_no_bootstrap.js')), array( 'jquery' ), null, true);
+            wp_enqueue_script($this->pluginName, ($loadBootstrap ? Assets::find('js/main.js') : Assets::find('js/main_no_bootstrap.js')), [], null, true);
         }
     }
 
