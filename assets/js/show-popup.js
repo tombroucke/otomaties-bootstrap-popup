@@ -18,7 +18,6 @@ export default function showPopups(popups, popupIndex, bootstrapModal) {
 		cookie.set(JSON.stringify(cookieContent));
 	}
 
-	console.log(showOnce);
 	if (!showOnce || !sawPopup) {
 		window.setTimeout(function () {
 			modal.show();
