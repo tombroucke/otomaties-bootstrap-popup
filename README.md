@@ -6,11 +6,8 @@ If you're loading bootstrap JS in your theme or another plugin, there's no need 
 
 Make sure otomaties-bootstrap-popup is loaded first
 ```php
-if (class_exists('Otomaties\\BootstrapPopup\\Plugin')) {
-    bundle('app')->enqueueCss()->enqueueJs(true, ['otomaties-bootstrap-popup']);
-} else {
-    bundle('app')->enqueue();
-}
+$dependencies = wp_script_is('otomaties-bootstrap-popup', 'enqueued') ? ['otomaties-bootstrap-popup'] : [];
+bundle('app')->enqueueCss()->enqueueJs(true, $dependencies);
 ```
 
 Load javascript without bootstrap
