@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="<?php echo apply_filters('otomaties_bootstrap_popup_modal_body_classes', 'modal-body'); ?>">
-                <?php echo apply_filters('the_content', $popup->content()); ?>
+                <?php echo apply_filters('otomaties_bootstrap_popup_content', $popup->content()); ?>
             </div>
             <?php if (!empty($popup->buttons()) || $popup->showCloseButton()) : ?>
                 <div class="<?php echo apply_filters('otomaties_bootstrap_popup_modal_footer_classes', 'modal-footer'); ?>">

@@ -109,6 +109,15 @@ class Plugin
         $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueStyles');
         $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueScripts', 999);
         $this->loader->addAction('wp_footer', $frontend, 'renderPopups');
+        
+        add_filter( 'otomaties_bootstrap_popup_content', 'do_blocks', 9 );
+        add_filter( 'otomaties_bootstrap_popup_content', 'wptexturize' );
+        add_filter( 'otomaties_bootstrap_popup_content', 'convert_smilies', 20 );
+        add_filter( 'otomaties_bootstrap_popup_content', 'wpautop' );
+        add_filter( 'otomaties_bootstrap_popup_content', 'shortcode_unautop' );
+        add_filter( 'otomaties_bootstrap_popup_content', 'prepend_attachment' );
+        add_filter( 'otomaties_bootstrap_popup_content', 'wp_filter_content_tags' );
+        add_filter( 'otomaties_bootstrap_popup_content', 'wp_replace_insecure_home_url' );
     }
 
     private function addWidgets() : void
