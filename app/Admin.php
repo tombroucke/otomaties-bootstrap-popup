@@ -111,13 +111,6 @@ class Admin
             return;
         }
 
-        $popup = new Popup($post_ID);
-        $showOnPages = $popup->showOnPages();
-
-        if (count($showOnPages) > 0) {
-            (new Cache())->cleanPost($popup->showOnPages());
-        } else {
-            (new Cache())->cleanDomain();
-        }
+        (new Cache())->cleanDomain();
     }
 }
