@@ -83,6 +83,7 @@ class Plugin
     {
 
         $admin = new Admin($this->getPluginName(), $this->getVersion());
+        $this->loader->addAction('save_post', $admin, 'clearCachesAfterSave');
         // $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueStyles');
         // $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueScripts');
     }

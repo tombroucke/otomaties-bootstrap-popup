@@ -2,6 +2,8 @@
 
 namespace Otomaties\BootstrapPopup;
 
+use Otomaties\BootstrapPopup\Models\Popup;
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -85,5 +87,27 @@ class Admin
          */
 
         wp_enqueue_script($this->pluginName, Assets::find('js/admin.js'), [], $this->version, false);
+    }
+
+    public function clearCachesAfterSave($post_ID) : void
+    {
+        if (get_post_type($post_ID) !== 'popup') {
+            return;
+        }
+
+        if (wp_is_post_revision($post_ID)) {
+            return;
+        }
+
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+            return;
+        }
+
+        if (!function_exists('get_field')) {
+            return;
+        }
+
+        $popup = new Popup($post_ID);
+        (new Cache())->cleanPost($popup->showOnPages());
     }
 }

@@ -72,6 +72,11 @@ class Popup extends PostType
         return substr(hash('sha1', $this->title() . $this->content()), 0, 6);
     }
 
+    public function showOnPages() : array
+    {
+        return (array)$this->meta()->get('show_on_pages');
+    }
+
     /**
      * Get all eligible popups for a certain page
      *
