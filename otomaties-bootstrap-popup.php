@@ -7,7 +7,7 @@ namespace Otomaties\BootstrapPopup;
  * Description: Add a configurable popup to your website
  * Author: Tom Broucke
  * Author URI: https://tombroucke.be
- * Version:           2.3.1
+ * Version:           2.4.0
  * License: GPL2
  * Text Domain: otomaties-popup
  * Domain Path: languages
