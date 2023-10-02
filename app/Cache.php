@@ -6,9 +6,8 @@ class Cache
 {
 
     public function cleanPost (array|string $postIds) {
-        if (function_exists('rocket_clean_post')) {
-            foreach ($postIds as $postId) {
-                ray($postId);
+        foreach ($postIds as $postId) {
+            if (function_exists('rocket_clean_post')) {
                 rocket_clean_post($postId);
             }
         }

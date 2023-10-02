@@ -74,7 +74,7 @@ class Popup extends PostType
 
     public function showOnPages() : array
     {
-        return (array)$this->meta()->get('show_on_pages');
+        return array_filter((array)$this->meta()->get('show_on_pages'));
     }
 
     /**

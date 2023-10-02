@@ -95,6 +95,10 @@ class Admin
             return;
         }
 
+        if (wp_is_post_autosave($post_ID)) {
+            return;
+        }
+
         if (wp_is_post_revision($post_ID)) {
             return;
         }
@@ -108,6 +112,12 @@ class Admin
         }
 
         $popup = new Popup($post_ID);
-        (new Cache())->cleanPost($popup->showOnPages());
+        $showOnPages = $popup->showOnPages();
+
+        if (count($showOnPages) > 0) {
+            (new Cache())->cleanPost($popup->showOnPages());
+        } else {
+            (new Cache())->cleanDomain();
+        }
     }
 }
