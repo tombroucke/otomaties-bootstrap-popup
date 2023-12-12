@@ -105,6 +105,15 @@ class Popup extends PostType
                 ],
             ]
         ];
+
+        if (is_home() && get_option('page_for_posts')) {
+            $id = get_option('page_for_posts');
+        }
+
+        if (function_exists('is_shop') && is_shop()) {
+            $id = get_option('woocommerce_shop_page_id');
+        }
+        
         if ($id) {
             $metaQuery[1][] = [
                 'key' => 'show_on_pages',
