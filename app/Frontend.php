@@ -86,11 +86,12 @@ class Frontend
     {
         $popups = Popup::eligiblePopups();
         foreach ($popups as $popup) {
+            $version = apply_filters('otomaties_bootstrap_popup_bootstrap_version', '5.x');
             $popupTemplate = dirname(__FILE__, 2) . '/templates/popup.php';
             ob_start();
             include($popupTemplate);
             $output = ob_get_clean();
-            echo apply_filters('otomaties_bootstrap_popup_template', $output, $popup);
+            echo apply_filters('otomaties_bootstrap_popup_template', $output, $popup, $version);
         }
     }
 }

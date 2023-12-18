@@ -3,7 +3,13 @@
         <div class="<?php echo apply_filters('otomaties_bootstrap_popup_modal_content_classes', 'modal-content'); ?>">
             <div class="<?php echo apply_filters('otomaties_bootstrap_popup_modal_header_classes', 'modal-header'); ?>">
                 <h5 class="<?php echo apply_filters('otomaties_bootstrap_popup_modal_title_classes', 'modal-title'); ?>" id="popup-<?php echo $popup->getId() ?>Title"><?php echo $popup->title(); ?></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <?php if ($version == '4.x') : ?>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                <?php else : ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <?php endif; ?>
             </div>
             <div class="<?php echo apply_filters('otomaties_bootstrap_popup_modal_body_classes', 'modal-body'); ?>">
                 <?php echo apply_filters('otomaties_bootstrap_popup_content', $popup->content()); ?>
