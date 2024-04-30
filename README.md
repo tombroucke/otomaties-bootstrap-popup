@@ -29,11 +29,18 @@ window.dispatchEvent(bootstrapLoadedEvent);
 
 ## Filters
 
-Filter available bootstrap themes
+### Use BS 4.x instead of 5.x
+```php
+add_filter('otomaties_bootstrap_popup_bootstrap_version', function() {
+    return '4.x';
+});
+```
+
+### Filter available bootstrap themes
 
 `otomaties_bootstrap_popup_button_themes`
 
-## Center popup
+### Center popup
 ```php
 add_filter('otomaties_bootstrap_popup_modal_dialog_classes', function ($classes) {
     $classes .= ' modal-dialog-centered';
