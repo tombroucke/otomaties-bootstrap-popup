@@ -62,9 +62,9 @@ class PopupTrigger extends \WP_Widget
      */
     public function update($newInstance, $oldInstance)
     {
-        $instance                 = $oldInstance;
-        $instance['label']        = sanitize_text_field($newInstance['label']);
-        $instance['popup_id']        = sanitize_text_field($newInstance['popup_id']);
+        $instance = $oldInstance;
+        $instance['label'] = sanitize_text_field($newInstance['label']);
+        $instance['popup_id'] = sanitize_text_field($newInstance['popup_id']);
 
         return $instance;
     }
@@ -79,18 +79,18 @@ class PopupTrigger extends \WP_Widget
     public function form($instance)
     {
         // Defaults.
-        $instance     = wp_parse_args((array) $instance, array('label' => '', 'popup' => null));
+        $instance = wp_parse_args((array) $instance, array('label' => '', 'popup' => null));
         $popups = Popup::find();
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('label'); ?>"><?php _e('Label:', 'otomaties-popup'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('label'); ?>"
-                name="<?php echo $this->get_field_name('label'); ?>" type="text"
+            <label for="<?php echo esc_attr($this->get_field_id('label')); ?>"><?php _e('Label:', 'otomaties-popup'); ?></label>
+            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('label')); ?>"
+                name="<?php echo esc_attr($this->get_field_name('label')); ?>" type="text"
                 value="<?php echo esc_attr($instance['label']); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('popup_id'); ?>"><?php _e('Popup:', 'otomaties-popup'); ?></label>
-            <select name="<?php echo $this->get_field_name('popup_id'); ?>" id="">
+            <label for="<?php echo esc_attr($this->get_field_id('popup_id')); ?>"><?php _e('Popup:', 'otomaties-popup'); ?></label>
+            <select name="<?php echo esc_attr($this->get_field_name('popup_id')); ?>" id="">
                 <option value=""><?php _e('Select', 'otomaties-popup'); ?></option>
                 <?php foreach ($popups as $popup) : ?>
                     <?php

@@ -84,8 +84,6 @@ class Plugin
 
         $admin = new Admin($this->getPluginName(), $this->getVersion());
         $this->loader->addAction('acf/save_post', $admin, 'clearCachesAfterSave', 999);
-        // $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueStyles');
-        // $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueScripts');
     }
 
     /**
@@ -107,7 +105,6 @@ class Plugin
     private function defineFrontendHooks() : void
     {
         $frontend = new Frontend($this->getPluginName());
-        $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueStyles');
         $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueScripts', 999);
         $this->loader->addAction('wp_footer', $frontend, 'renderPopups');
         

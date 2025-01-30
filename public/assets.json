@@ -1,12 +1,8 @@
 {
   "main": {
-    "js": "js/main.e952149255ffe9c297d5.js"
+    "js": "js/main.a254ab0f8b63efc1e64c.js"
   },
   "main_no_bootstrap": {
     "js": "js/main_no_bootstrap.d8505023f654802a5951.js"
-  },
-  "admin": {
-    "css": "css/admin.min.css",
-    "js": "js/admin.31d6cfe0d16ae931b73c.js"
   }
 }

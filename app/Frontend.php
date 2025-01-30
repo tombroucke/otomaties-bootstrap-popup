@@ -35,28 +35,6 @@ class Frontend
     }
 
     /**
-     * Register the stylesheets for the public-facing side of the site.
-     *
-     * @return void
-     */
-    public function enqueueStyles() : void
-    {
-
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-        // wp_enqueue_style($this->pluginName, Assets::find('css/main.css'), array(), null);
-    }
-
-    /**
      * Register the JavaScript for the public-facing side of the site.
      *
      * @return void
@@ -76,10 +54,12 @@ class Frontend
          * class.
          */
 
-        if (count(Popup::eligiblePopups()) > 0) {
-            $loadBootstrap = apply_filters('otomaties_bootstrap_popup_load_bootstrap', true);
-            wp_enqueue_script($this->pluginName, ($loadBootstrap ? Assets::find('js/main.js') : Assets::find('js/main_no_bootstrap.js')), [], null, true);
+        if (count(Popup::eligiblePopups()) == 0) {
+            return;
         }
+        
+        $loadBootstrap = apply_filters('otomaties_bootstrap_popup_load_bootstrap', true);
+        wp_enqueue_script($this->pluginName, ($loadBootstrap ? Assets::find('js/main.js') : Assets::find('js/main_no_bootstrap.js')), [], null, true);
     }
 
     public function renderPopups() : void

@@ -4,7 +4,6 @@ namespace Otomaties\BootstrapPopup;
 
 class Cache
 {
-
     public function cleanPost (array|string $postIds) {
         foreach ($postIds as $postId) {
             if (function_exists('rocket_clean_post')) {
@@ -18,5 +17,4 @@ class Cache
             rocket_clean_domain($language);
         }
     }
-
 }

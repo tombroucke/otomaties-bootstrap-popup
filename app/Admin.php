@@ -42,30 +42,7 @@ class Admin
         $this->pluginName = $pluginName;
         $this->version = $version;
     }
-
-    /**
-     * Register the stylesheets for the admin area.
-     *
-     * @return void
-     */
-    public function enqueueStyles() : void
-    {
-
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-
-        wp_enqueue_style($this->pluginName, Assets::find('css/admin.css'), array(), $this->version, 'all');
-    }
-
+    
     /**
      * Register the JavaScript for the admin area.
      *

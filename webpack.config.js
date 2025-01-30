@@ -11,7 +11,6 @@ module.exports = (env, argv) => ({
 	entry: {
 		main: './assets/js/main.js',
 		main_no_bootstrap: './assets/js/main-no-bootstrap.js',
-		admin: './assets/js/admin.js',
 	},
 	output: {
 		path: __dirname + '/public',
