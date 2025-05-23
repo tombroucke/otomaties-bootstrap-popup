@@ -9,10 +9,11 @@ Make sure otomaties-bootstrap-popup is loaded first
 $dependencies = wp_script_is('otomaties-bootstrap-popup', 'enqueued') ? ['otomaties-bootstrap-popup'] : [];
 bundle('app')->enqueueCss()->enqueueJs(true, $dependencies);
 ```
+`wp_enqueue_scripts` priority should be > 999
 
 Load javascript without bootstrap
 ```php
-add_filter('otomaties_bootstrap_popup_load_bootstrap', '__return_false');
+add_filter('otomaties_bootstrap_popup_load_bootstrap', fn() => false);
 ```
 
 Pass modal component through a custom BootstrapLoaded event
@@ -20,7 +21,7 @@ Pass modal component through a custom BootstrapLoaded event
 import { Modal } from 'bootstrap';
 
 const bootstrapComponents = {
-    modal: Modal,
+    modal: Modal, // `bootstrap.Modal` if you're not importing bootstrap
 }
 
 const bootstrapLoadedEvent = new CustomEvent('BootstrapLoaded', {detail: {components : bootstrapComponents}});
@@ -31,9 +32,7 @@ window.dispatchEvent(bootstrapLoadedEvent);
 
 ### Use BS 4.x instead of 5.x
 ```php
-add_filter('otomaties_bootstrap_popup_bootstrap_version', function() {
-    return '4.x';
-});
+add_filter('otomaties_bootstrap_popup_bootstrap_version', fn() => '4.x');
 ```
 
 ### Filter available bootstrap themes
