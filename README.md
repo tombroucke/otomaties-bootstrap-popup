@@ -41,8 +41,5 @@ add_filter('otomaties_bootstrap_popup_bootstrap_version', fn() => '4.x');
 
 ### Center popup
 ```php
-add_filter('otomaties_bootstrap_popup_modal_dialog_classes', function ($classes) {
-    $classes .= ' modal-dialog-centered';
-    return $classes;
-});
+add_filter('otomaties_bootstrap_popup_modal_dialog_classes', fn($classes) => $classes . ' modal-dialog-centered');
 ```
