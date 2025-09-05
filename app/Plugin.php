@@ -11,22 +11,20 @@ namespace Otomaties\BootstrapPopup;
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  */
-
 class Plugin
 {
-
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
      * the plugin.
      *
-     * @var      Loader    $loader    Maintains and registers all hooks for the plugin.
+     * @var Loader Maintains and registers all hooks for the plugin.
      */
     protected $loader;
 
     /**
      * The current version of the plugin.
      *
-     * @var      string    $version    The current version of the plugin.
+     * @var string The current version of the plugin.
      */
     protected $version;
 
@@ -44,13 +42,13 @@ class Plugin
      * Load the dependencies, define the locale, and set the hooks for the admin area and
      * the public-facing side of the site.
      *
-     * @param array<string, mixed> $pluginData
+     * @param  array<string, mixed>  $pluginData
      */
     public function __construct($pluginData)
     {
         $this->version = $pluginData['Version'];
         $this->pluginName = $pluginData['pluginName'];
-        $this->loader = new Loader();
+        $this->loader = new Loader;
 
         $this->setLocale();
         $this->defineAdminHooks();
@@ -64,12 +62,11 @@ class Plugin
      *
      * Uses the i18n class in order to set the domain and to register the hook
      * with WordPress.
-     *
      */
-    private function setLocale() : void
+    private function setLocale(): void
     {
 
-        $plugin_i18n = new I18n();
+        $plugin_i18n = new I18n;
 
         $this->loader->addAction('plugins_loaded', $plugin_i18n, 'loadTextdomain');
     }
@@ -77,9 +74,8 @@ class Plugin
     /**
      * Register all of the hooks related to the admin-facing functionality
      * of the plugin.
-     *
      */
-    private function defineAdminHooks() : void
+    private function defineAdminHooks(): void
     {
 
         $admin = new Admin($this->getPluginName(), $this->getVersion());
@@ -88,11 +84,10 @@ class Plugin
 
     /**
      * Register post types
-     *
      */
-    private function definePostTypeHooks() : void
+    private function definePostTypeHooks(): void
     {
-        $cpts = new CustomPostTypes();
+        $cpts = new CustomPostTypes;
         $this->loader->addAction('init', $cpts, 'addPopups');
         $this->loader->addAction('acf/init', $cpts, 'addPopupFields');
     }
@@ -100,14 +95,13 @@ class Plugin
     /**
      * Register all of the hooks related to the public-facing functionality
      * of the plugin.
-     *
      */
-    private function defineFrontendHooks() : void
+    private function defineFrontendHooks(): void
     {
         $frontend = new Frontend($this->getPluginName());
         $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueScripts', 999);
         $this->loader->addAction('wp_footer', $frontend, 'renderPopups');
-        
+
         add_filter('otomaties_bootstrap_popup_content', 'do_blocks', 9);
         add_filter('otomaties_bootstrap_popup_content', 'wptexturize');
         add_filter('otomaties_bootstrap_popup_content', 'convert_smilies', 20);
@@ -119,7 +113,7 @@ class Plugin
         add_filter('otomaties_bootstrap_popup_content', 'wp_filter_content_tags', 12);
     }
 
-    private function addWidgets() : void
+    private function addWidgets(): void
     {
         add_action('widgets_init', function () {
             register_widget('Otomaties\\BootstrapPopup\\Widgets\\PopupTrigger');
@@ -128,9 +122,8 @@ class Plugin
 
     /**
      * Run the loader to execute all of the hooks with WordPress.
-     *
      */
-    public function run() : void
+    public function run(): void
     {
         $this->loader->run();
     }
@@ -139,6 +132,7 @@ class Plugin
      * The reference to the class that orchestrates the hooks with the plugin.
      *
      * @since 1.0.0
+     *
      * @return Loader Orchestrates the hooks of the plugin.
      */
     public function getLoader()
@@ -150,6 +144,7 @@ class Plugin
      * Retrieve the name of the plugin.
      *
      * @since 1.0.0
+     *
      * @return string The name of the plugin.
      */
     public function getPluginName()
@@ -161,7 +156,8 @@ class Plugin
      * Retrieve the version number of the plugin.
      *
      * @since     1.0.0
-     * @return    string    The version number of the plugin.
+     *
+     * @return string The version number of the plugin.
      */
     public function getVersion()
     {

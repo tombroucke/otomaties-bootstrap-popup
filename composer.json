@@ -1,7 +1,12 @@
 {
   "name": "tombroucke/otomaties-bootstrap-popup",
   "description": "",
-  "keywords": ["wordpress", "plugin", "bootstrap", "popup"],
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "bootstrap",
+    "popup"
+  ],
   "homepage": "https://github.com/tombroucke/otomaties-bootstrap-popup",
   "authors": [
     {
@@ -11,15 +16,16 @@
   ],
   "type": "wordpress-plugin",
   "require": {
+    "php": "^8.0",
     "composer/installers": "^2.0",
     "johnbillion/extended-cpts": "^5.0",
     "stoutlogic/acf-builder": "^1.12",
     "tombroucke/wp-models": "^2.1"
   },
   "autoload": {
-      "psr-4": {
-          "Otomaties\\BootstrapPopup\\": "app/"
-      }
+    "psr-4": {
+      "Otomaties\\BootstrapPopup\\": "app/"
+    }
   },
   "config": {
     "allow-plugins": {
@@ -28,11 +34,12 @@
   },
   "require-dev": {
     "szepeviktor/phpstan-wordpress": "^1.3",
-    "php-stubs/acf-pro-stubs": "^6.0"
+    "php-stubs/acf-pro-stubs": "^6.0",
+    "laravel/pint": "^1.24"
   },
   "scripts": {
-      "test": [
-          "vendor/bin/phpstan analyze app templates otomaties-bootstrap-popup.php --memory-limit 512M"
-      ]
+    "test": [
+      "vendor/bin/phpstan analyze app templates otomaties-bootstrap-popup.php --memory-limit 512M"
+    ]
   }
 }

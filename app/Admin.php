@@ -2,39 +2,33 @@
 
 namespace Otomaties\BootstrapPopup;
 
-use Otomaties\BootstrapPopup\Models\Popup;
-
 /**
  * The admin-specific functionality of the plugin.
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @subpackage BootstrapPopup/admin
  */
-
 class Admin
 {
-
     /**
      * The ID of this plugin.
      *
-     * @var      string    $pluginName    The ID of this plugin.
+     * @var string The ID of this plugin.
      */
     private $pluginName;
 
     /**
      * The version of this plugin.
      *
-     * @var      string    $version    The current version of this plugin.
+     * @var string The current version of this plugin.
      */
     private $version;
 
     /**
      * Initialize the class and set its properties.
      *
-     * @param      string    $pluginName       The name of this plugin.
-     * @param      string    $version    The version of this plugin.
+     * @param  string  $pluginName  The name of this plugin.
+     * @param  string  $version  The version of this plugin.
      */
     public function __construct($pluginName, $version)
     {
@@ -42,13 +36,11 @@ class Admin
         $this->pluginName = $pluginName;
         $this->version = $version;
     }
-    
+
     /**
      * Register the JavaScript for the admin area.
-     *
-     * @return void
      */
-    public function enqueueScripts() : void
+    public function enqueueScripts(): void
     {
 
         /**
@@ -62,11 +54,10 @@ class Admin
          * between the defined hooks and the functions defined in this
          * class.
          */
-
         wp_enqueue_script($this->pluginName, Assets::find('js/admin.js'), [], $this->version, false);
     }
 
-    public function clearCachesAfterSave($post_ID) : void
+    public function clearCachesAfterSave(int|string $post_ID): void
     {
         if (get_post_type($post_ID) !== 'popup') {
             return;
@@ -84,10 +75,10 @@ class Admin
             return;
         }
 
-        if (!function_exists('get_field')) {
+        if (! function_exists('get_field')) {
             return;
         }
 
-        (new Cache())->cleanDomain();
+        (new Cache)->cleanDomain();
     }
 }

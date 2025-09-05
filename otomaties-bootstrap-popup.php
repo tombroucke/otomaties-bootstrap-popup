@@ -15,12 +15,12 @@ namespace Otomaties\BootstrapPopup;
 
 // If this file is called directly, abort.
 if (! defined('WPINC')) {
-    die;
+    exit;
 }
 
 // Autoload files
-if (file_exists(__DIR__ . '/vendor/autoload.php')) {
-    require_once realpath(__DIR__ . '/vendor/autoload.php');
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require_once realpath(__DIR__.'/vendor/autoload.php');
 }
 
 // Setup / teardown
@@ -34,10 +34,10 @@ register_deactivation_hook(__FILE__, '\\Otomaties\\BootstrapPopup\\Deactivator::
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  */
-function init() : void
+function init(): void
 {
     if (! function_exists('get_plugin_data')) {
-        require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+        require_once ABSPATH.'wp-admin/includes/plugin.php';
     }
     $pluginData = \get_plugin_data(__FILE__, false, false);
     $pluginData['pluginName'] = basename(__FILE__, '.php');

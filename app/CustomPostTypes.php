@@ -1,4 +1,7 @@
-<?php //phpcs:ignore
+<?php
+
+// phpcs:ignore
+
 namespace Otomaties\BootstrapPopup;
 
 use StoutLogic\AcfBuilder\FieldsBuilder;
@@ -8,13 +11,10 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
  */
 class CustomPostTypes
 {
-
     /**
      * Register post type popup
-     *
-     * @return void
      */
-    public function addPopups() : void
+    public function addPopups(): void
     {
         $postType = 'popup';
         $slug = 'popup';
@@ -34,22 +34,20 @@ class CustomPostTypes
                 'show_in_nav_menus' => true,
                 'menu_icon' => 'dashicons-megaphone',
                 'labels' => $this->postTypeLabels($postSingularName, $postPluralName),
-                'support' => ['title', 'editor', 'author', 'revisions']
+                'support' => ['title', 'editor', 'author', 'revisions'],
             ],
             [
                 'singular' => $postSingularName,
-                'plural'   => $postPluralName,
-                'slug'     => $slug,
+                'plural' => $postPluralName,
+                'slug' => $slug,
             ]
         );
     }
 
     /**
      * Add fields to popup post type
-     *
-     * @return void
      */
-    public function addPopupFields() : void
+    public function addPopupFields(): void
     {
         $themeChoices = apply_filters('otomaties_bootstrap_popup_button_themes', [
             'primary' => __('Primary', 'otomaties-popup'),
@@ -90,13 +88,13 @@ class CustomPostTypes
             ->addRepeater('buttons', [
                 'label' => __('Buttons', 'otomaties-popup'),
             ])
-                ->addLink('button', [
-                    'label' => __('button', 'otomaties-popup'),
-                ])
-                ->addSelect('theme', [
-                    'label' => __('Theme', 'otomaties-popup'),
-                    'choices' => $themeChoices,
-                ])
+            ->addLink('button', [
+                'label' => __('button', 'otomaties-popup'),
+            ])
+            ->addSelect('theme', [
+                'label' => __('Theme', 'otomaties-popup'),
+                'choices' => $themeChoices,
+            ])
             ->endRepeater()
             ->setLocation('post_type', '==', 'popup');
         acf_add_local_field_group($popup->build());
@@ -105,58 +103,58 @@ class CustomPostTypes
     /**
      * Translate post type labels
      *
-     * @param  string $singular_name The singular name for the post type.
-     * @param  string $plural_name   The plural name for the post type.
+     * @param  string  $singular_name  The singular name for the post type.
+     * @param  string  $plural_name  The plural name for the post type.
      * @return array<string, string>
      */
-    private function postTypeLabels($singular_name, $plural_name) : array
+    private function postTypeLabels($singular_name, $plural_name): array
     {
         return [
-            'add_new'                  => __('Add New', 'otomaties-popup'),
+            'add_new' => __('Add New', 'otomaties-popup'),
             /* translators: %s: singular post name */
-            'add_new_item'             => sprintf(__('Add New %s', 'otomaties-popup'), $singular_name),
+            'add_new_item' => sprintf(__('Add New %s', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name */
-            'edit_item'                => sprintf(__('Edit %s', 'otomaties-popup'), $singular_name),
+            'edit_item' => sprintf(__('Edit %s', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name */
-            'new_item'                 => sprintf(__('New %s', 'otomaties-popup'), $singular_name),
+            'new_item' => sprintf(__('New %s', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name */
-            'view_item'                => sprintf(__('View %s', 'otomaties-popup'), $singular_name),
+            'view_item' => sprintf(__('View %s', 'otomaties-popup'), $singular_name),
             /* translators: %s: plural post name */
-            'view_items'               => sprintf(__('View %s', 'otomaties-popup'), $plural_name),
+            'view_items' => sprintf(__('View %s', 'otomaties-popup'), $plural_name),
             /* translators: %s: singular post name */
-            'search_items'             => sprintf(__('Search %s', 'otomaties-popup'), $plural_name),
+            'search_items' => sprintf(__('Search %s', 'otomaties-popup'), $plural_name),
             /* translators: %s: plural post name to lower */
-            'not_found'                => sprintf(__('No %s found.', 'otomaties-popup'), strtolower($plural_name)),
+            'not_found' => sprintf(__('No %s found.', 'otomaties-popup'), strtolower($plural_name)),
             /* translators: %s: plural post name to lower */
-            'not_found_in_trash'       => sprintf(__('No %s found in trash.', 'otomaties-popup'), strtolower($plural_name)),
+            'not_found_in_trash' => sprintf(__('No %s found in trash.', 'otomaties-popup'), strtolower($plural_name)),
             /* translators: %s: singular post name */
-            'parent_item_colon'        => sprintf(__('Parent %s:', 'otomaties-popup'), $singular_name),
+            'parent_item_colon' => sprintf(__('Parent %s:', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name */
-            'all_items'                => sprintf(__('All %s', 'otomaties-popup'), $plural_name),
+            'all_items' => sprintf(__('All %s', 'otomaties-popup'), $plural_name),
             /* translators: %s: singular post name */
-            'archives'                 => sprintf(__('%s Archives', 'otomaties-popup'), $singular_name),
+            'archives' => sprintf(__('%s Archives', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name */
-            'attributes'               => sprintf(__('%s Attributes', 'otomaties-popup'), $singular_name),
+            'attributes' => sprintf(__('%s Attributes', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name to lower */
-            'insert_into_item'         => sprintf(__('Insert into %s', 'otomaties-popup'), strtolower($singular_name)),
+            'insert_into_item' => sprintf(__('Insert into %s', 'otomaties-popup'), strtolower($singular_name)),
             /* translators: %s: singular post name to lower */
-            'uploaded_to_this_item'    => sprintf(__('Uploaded to this %s', 'otomaties-popup'), strtolower($singular_name)),
+            'uploaded_to_this_item' => sprintf(__('Uploaded to this %s', 'otomaties-popup'), strtolower($singular_name)),
             /* translators: %s: plural post name to lower */
-            'filter_items_list'        => sprintf(__('Filter %s list', 'otomaties-popup'), strtolower($plural_name)),
+            'filter_items_list' => sprintf(__('Filter %s list', 'otomaties-popup'), strtolower($plural_name)),
             /* translators: %s: singular post name */
-            'items_list_navigation'    => sprintf(__('%s list navigation', 'otomaties-popup'), $plural_name),
+            'items_list_navigation' => sprintf(__('%s list navigation', 'otomaties-popup'), $plural_name),
             /* translators: %s: singular post name */
-            'items_list'               => sprintf(__('%s list', 'otomaties-popup'), $plural_name),
+            'items_list' => sprintf(__('%s list', 'otomaties-popup'), $plural_name),
             /* translators: %s: singular post name */
-            'item_published'           => sprintf(__('%s published.', 'otomaties-popup'), $singular_name),
+            'item_published' => sprintf(__('%s published.', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name */
             'item_published_privately' => sprintf(__('%s published privately.', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name */
-            'item_reverted_to_draft'   => sprintf(__('%s reverted to draft.', 'otomaties-popup'), $singular_name),
+            'item_reverted_to_draft' => sprintf(__('%s reverted to draft.', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name */
-            'item_scheduled'           => sprintf(__('%s scheduled.', 'otomaties-popup'), $singular_name),
+            'item_scheduled' => sprintf(__('%s scheduled.', 'otomaties-popup'), $singular_name),
             /* translators: %s: singular post name */
-            'item_updated'             => sprintf(__('%s updated.', 'otomaties-popup'), $singular_name),
+            'item_updated' => sprintf(__('%s updated.', 'otomaties-popup'), $singular_name),
         ];
     }
 

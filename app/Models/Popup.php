@@ -1,4 +1,5 @@
 <?php
+
 namespace Otomaties\BootstrapPopup\Models;
 
 use Otomaties\WpModels\PostType;
@@ -11,36 +12,37 @@ class Popup extends PostType
 {
     /**
      * Construct parent
-     * @param int $id post_id
+     *
+     * @param  int  $postId  post_id
      */
-    public function __construct($id)
+    public function __construct(int|\WP_Post $postId)
     {
-        parent::__construct($id);
+        parent::__construct($postId);
     }
 
-    public static function postType() : string
+    public static function postType(): string
     {
         return 'popup';
     }
 
-    public function delay() : int
+    public function delay(): int
     {
-        return (int)$this->meta()->get('delay');
+        return (int) $this->meta()->get('delay');
     }
 
-    public function showOnce() : bool
+    public function showOnce(): bool
     {
-        return (bool)$this->meta()->get('show_once');
+        return (bool) $this->meta()->get('show_once');
     }
 
-    public function title() : string
+    public function title(): string
     {
         return $this->meta()->get('title');
     }
 
-    public function showCloseButton() : bool
+    public function showCloseButton(): bool
     {
-        return (bool)$this->meta()->get('show_close_button');
+        return (bool) $this->meta()->get('show_close_button');
     }
 
     /**
@@ -48,10 +50,11 @@ class Popup extends PostType
      *
      * @return array<array<string, mixed>>
      */
-    public function buttons() : array
+    public function buttons(): array
     {
         $buttons = [];
-        $buttons = array_filter((array)get_field('buttons', $this->getId()));
+        $buttons = array_filter((array) get_field('buttons', $this->getId()));
+
         return array_map(function ($button) {
             return [
                 'label' => $button['button']['title'],
@@ -62,19 +65,19 @@ class Popup extends PostType
         }, $buttons);
     }
 
-    public function enabled() : bool
+    public function enabled(): bool
     {
-        return (bool)$this->meta()->get('enabled');
+        return (bool) $this->meta()->get('enabled');
     }
 
-    public function hash() : string
+    public function hash(): string
     {
-        return substr(hash('sha1', $this->title() . $this->content()), 0, 6);
+        return substr(hash('sha1', $this->title().$this->content()), 0, 6);
     }
 
-    public function showOnPages() : array
+    public function showOnPages(): array
     {
-        return array_filter((array)$this->meta()->get('show_on_pages'));
+        return array_filter((array) $this->meta()->get('show_on_pages'));
     }
 
     /**
@@ -97,13 +100,13 @@ class Popup extends PostType
                 'relation' => 'OR',
                 [
                     'key' => 'show_on_pages',
-                    'compare' => 'NOT EXISTS'
+                    'compare' => 'NOT EXISTS',
                 ],
                 [
                     'key' => 'show_on_pages',
                     'value' => '',
                 ],
-            ]
+            ],
         ];
 
         if (is_home() && get_option('page_for_posts')) {
@@ -113,16 +116,17 @@ class Popup extends PostType
         if (function_exists('is_shop') && is_shop()) {
             $id = get_option('woocommerce_shop_page_id');
         }
-        
+
         if ($id) {
             $metaQuery[1][] = [
                 'key' => 'show_on_pages',
-                'value' => '"' . $id . '"',
-                'compare' => 'LIKE'
+                'value' => '"'.$id.'"',
+                'compare' => 'LIKE',
             ];
         }
         $args['meta_query'] = $metaQuery;
         $popups = Popup::find($args);
+
         return $popups;
     }
 }

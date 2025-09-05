@@ -9,24 +9,20 @@ use Otomaties\BootstrapPopup\Models\Popup;
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
- *
- * @subpackage BootstrapPopup/public
  */
-
 class Frontend
 {
-
     /**
      * The ID of this plugin.
      *
-     * @var string $pluginName The ID of this plugin.
+     * @var string The ID of this plugin.
      */
     private $pluginName;
 
     /**
      * Initialize the class and set its properties.
      *
-     * @param string $pluginName The name of the plugin.
+     * @param  string  $pluginName  The name of the plugin.
      */
     public function __construct($pluginName)
     {
@@ -36,10 +32,8 @@ class Frontend
 
     /**
      * Register the JavaScript for the public-facing side of the site.
-     *
-     * @return void
      */
-    public function enqueueScripts() : void
+    public function enqueueScripts(): void
     {
 
         /**
@@ -53,23 +47,22 @@ class Frontend
          * between the defined hooks and the functions defined in this
          * class.
          */
-
         if (count(Popup::eligiblePopups()) == 0) {
             return;
         }
-        
+
         $loadBootstrap = apply_filters('otomaties_bootstrap_popup_load_bootstrap', true);
         wp_enqueue_script($this->pluginName, ($loadBootstrap ? Assets::find('js/main.js') : Assets::find('js/main_no_bootstrap.js')), [], null, true);
     }
 
-    public function renderPopups() : void
+    public function renderPopups(): void
     {
         $popups = Popup::eligiblePopups();
         foreach ($popups as $popup) {
             $version = apply_filters('otomaties_bootstrap_popup_bootstrap_version', '5.x');
-            $popupTemplate = dirname(__FILE__, 2) . '/templates/popup.php';
+            $popupTemplate = dirname(__FILE__, 2).'/templates/popup.php';
             ob_start();
-            include($popupTemplate);
+            include $popupTemplate;
             $output = ob_get_clean();
             echo apply_filters('otomaties_bootstrap_popup_template', $output, $popup, $version);
         }
